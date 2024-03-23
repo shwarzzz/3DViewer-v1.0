@@ -13,7 +13,7 @@ endif
 all: install
 
 install:
-	@echo "Installation of S21_3D_Viewer_v1.0:"
+	@echo "Installation of 3D_Viewer_v1.0:"
 	@mkdir -p ../build
 	@cd Frontend/3D_Viewer_v1 && qmake && make && make clean && rm -rf Makefile && mv 3D_Viewer_v1 ../../../build/$(TARGET).app
 	@echo "Installation completed! You can find the app in the ../build/ folder!"
@@ -22,15 +22,11 @@ uninstall:
 	@rm -rf ../build
 	@echo "Uninstall completed!"
 	
-dvi:
-	open our_readme.md
-	
 dist: 
 	@mkdir -p ../dist
 	@cp -R ../build/$(TARGET).app ../dist
-	@cp our_readme.md ../dist 
 	@cd ../dist && tar cvzf $(TARGET).tgz *
-	@cd ../dist && rm -rf $(TARGET).app our_readme.md
+	@cd ../dist && rm -rf $(TARGET).app 
 	@echo "Archive creation completed successfully!"
 
 tests: clean s21_3d_viewer.a
